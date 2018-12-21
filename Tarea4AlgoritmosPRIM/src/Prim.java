@@ -53,14 +53,20 @@ public class Prim {
         }
         
         public void distance(int nodeA, int nodeB){
-            distancias[nodeA][nodeB]=nodos.get(nodeA).distance(nodos.get(nodeB));
+            double distancia=nodos.get(nodeA).distance(nodos.get(nodeB));
+            distancias[nodeA][nodeB]=distancia;
+            distancias[nodeB][nodeA]=distancia;
         }
         
         public void imprimeMatriz(){
+            System.out.println("Árbol de Expansión: ");
             for (int x=0; x < distancias.length; x++) {
                 System.out.print("");
                 for (int y=0; y < distancias[x].length; y++) {
-                    System.out.print (distancias[x][y]);
+                    if (y==0) System.out.print(x);
+                    else if (x==0) System.out.print(y);
+                    else
+                        System.out.print (distancias[x][y]);
                     if (y!=distancias[x].length-1) System.out.print("\t");
                 }
             System.out.println("");
